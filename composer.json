@@ -1,0 +1,40 @@
+{
+  "name": "ranpafin/phpoker",
+  "type": "library",
+  "description": "DDD/BDD approach to Texas Hold'em poker game, in php.",
+  "keywords": [
+    "Texas Hold'em",
+    "Poker",
+    "OOP",
+    "DDD",
+    "BDD"
+  ],
+  "homepage": "http://github.com/ranpafin/phpoker",
+  "license": "Apache License Version 2.0",
+  "authors": [
+    {
+      "name": "Francesco Panina",
+      "email": "francesco.panina@gmail.com"
+    }
+  ],
+  "require": {
+    "symfony/dependency-injection": "2.*",
+    "symfony/config": "2.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "@stable",
+    "phpspec/phpspec": "~2.0",
+    "behat/behat": "~2.5"
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "bin": ["src/phpoker/Bin/phpoker"],
+  "autoload": {
+    "psr-4": {
+      "": "src/",
+      "spec\\": "spec/"
+    }
+  },
+  "minimum-stability": "dev"
+}
