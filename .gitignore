@@ -5,6 +5,6 @@
 *.tgz
 *.phar
 bin
-vendor/
+vendor
 composer.lock
-build/
+build

@@ -9,13 +9,16 @@ RUN apt-get install -y apt-utils
 RUN apt-get install -y curl
 RUN apt-get install -y zsh
 RUN apt-get install -y ssh
+RUN apt-get install -y rsync
+RUN apt-get install -y patch
+RUN apt-get install -y rename
+RUN apt-get install -y perl
 RUN apt-get install -y git
 RUN apt-get install -y sudo
 RUN apt-get install -y php5 php5-curl php5-intl php5-mysql php5-xdebug
 RUN apt-get install -y git
-RUN apt-get install -y less vim-tiny
+RUN apt-get install -y less vim-tiny nano
 RUN apt-get install -y apg
-RUN apt-get install -y nano
 RUN apt-get install -y wget
 
 COPY config/sudoers /etc/sudoers

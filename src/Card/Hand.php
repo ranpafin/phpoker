@@ -5,7 +5,7 @@ namespace Card;
 /**
  * Class Hand.
  */
-class Hand
+class Hand implements HandInterface
 {
     /**
      * @var \SplFixedArray
@@ -13,30 +13,91 @@ class Hand
     protected $cards;
 
     /**
-     * @param ...$cards
+     * @param Card ...$cards
      */
-    public function __construct(...$cards)
+    public function __construct(Card ...$cards)
     {
-        $this->cards = new \SplFixedArray(5);
-
         if (count($cards) > 5) {
-            throw new \BadMethodCallException('max 5 cards');
+            throw new \BadMethodCallException('max 5 cards. Found: '.count($cards));
         }
 
-        foreach ($cards as $key => $card) {
-            if (!$card instanceof Card) {
-                throw new \BadMethodCallException('Only cards');
-            }
-        }
+        usort($cards, function (Card $a, Card $b) {
+              $faceValueDifference = $b->getFaceValue() - $a->getFaceValue();
 
-        $this->cards->fromArray($cards, false);
+            return $faceValueDifference === 0 ? $b->getSuit()->getSuit() - $a->getSuit()->getSuit() : $faceValueDifference;
+
+        });
+
+        $this->cards = \SplFixedArray::fromArray($cards, false);
     }
 
     /**
-     * @return \SplFixedArray
+     * @return Card[]
      */
     public function getCards()
     {
         return $this->cards->toArray();
+    }
+
+    /**
+     * @param HandInterface $hand
+     *
+     * @return HandInterface
+     */
+    public function discard(HandInterface $hand)
+    {
+        $cards = $this->getCards();
+
+        foreach ($hand->getCards() as $card) {
+            if (($key = array_search($card, $cards, false)) !== false) {
+                unset($cards[$key]);
+            }
+        }
+
+        return new self(...$cards);
+    }
+
+    /**
+     * @param HandInterface $handInterface
+     *
+     * @return HandInterface
+     */
+    public function insert(HandInterface $handInterface)
+    {
+        return new self(
+            ...array_merge(
+                $this->discard($handInterface)->getCards(),
+                $handInterface->getCards()
+            )
+        );
+    }
+
+    /**
+     * @param int $numberOfCardsToKeep
+     *
+     * @return HandInterface
+     */
+    public function keep($numberOfCardsToKeep)
+    {
+        if ($this->cards->count() <= $numberOfCardsToKeep) {
+            return $this;
+        }
+
+        return new self(
+            ...array_slice($this->getCards(), 0, $numberOfCardsToKeep)
+        );
+    }
+
+    /**
+     * @return int
+     */
+    public function getFaceValue()
+    {
+        $faceValue = 0;
+        foreach ($this->getCards() as $card) {
+            $faceValue += $card->getFaceValue();
+        }
+
+        return $faceValue;
     }
 }

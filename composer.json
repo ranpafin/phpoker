@@ -23,8 +23,7 @@
   },
   "require-dev": {
     "phpunit/phpunit": "@stable",
-    "phpspec/phpspec": "~2.0",
-    "behat/behat": "~2.5"
+    "satooshi/php-coveralls": "dev-master"
   },
   "config": {
     "bin-dir": "bin"
@@ -33,7 +32,8 @@
   "autoload": {
     "psr-4": {
       "": "src/",
-      "spec\\": "spec/"
+      "spec\\": "spec/",
+      "tests\\": "tests/"
     }
   },
   "minimum-stability": "dev"

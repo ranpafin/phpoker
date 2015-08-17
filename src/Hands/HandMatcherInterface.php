@@ -13,7 +13,7 @@ interface HandMatcherInterface
     /**
      * @param HandInterface $hand
      *
-     * @return bool
+     * @return Score|null
      */
     public function match(HandInterface $hand);
 }

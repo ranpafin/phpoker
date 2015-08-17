@@ -2,13 +2,12 @@
 
 namespace Hands;
 
-use Card\Hand;
 use Card\HandInterface;
 
 /**
  * Class Score.
  */
-class Score extends Hand implements ScoreInterface
+class Score implements ScoreInterface
 {
     /**
      * @var int
@@ -16,13 +15,18 @@ class Score extends Hand implements ScoreInterface
     protected $score;
 
     /**
+     * @var HandInterface
+     */
+    protected $hand;
+
+    /**
      * @param HandInterface $hand
      * @param int           $score
      */
     public function __construct(HandInterface $hand, $score)
     {
-        parent::__construct(...$hand->getCards());
         $this->score = $score;
+        $this->hand = $hand;
     }
 
     /**
@@ -31,5 +35,13 @@ class Score extends Hand implements ScoreInterface
     public function getScore()
     {
         return $this->score;
+    }
+
+    /**
+     * @return HandInterface
+     */
+    public function getHand()
+    {
+        return $this->hand;
     }
 }
