@@ -12,7 +12,7 @@ fast_finish: true
 
 before_script:
   - if [[ $TRAVIS_PHP_VERSION = '5.6' ]]; then PHPUNIT_FLAGS="--coverage-clover ./build/logs/clover.xml"; else PHPUNIT_FLAGS=""; fi
-  - composer install -vvv
+  - composer install -v
 
 script:
   - phpunit -v $PHPUNIT_FLAGS
