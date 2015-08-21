@@ -15,7 +15,7 @@ class HighCard implements HandMatcherInterface, AdjustableHandStrengthInterface
     /**
      * @param HandInterface $hand
      *
-     * @return Score
+     * @return Score|null
      */
     public function match(HandInterface $hand)
     {

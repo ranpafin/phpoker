@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Hands;
+namespace tests\unit\Hands;
 
 use Card\Hand;
 use Card\HandInterface;
@@ -33,12 +33,12 @@ class HighCardTest extends \PHPUnit_Framework_TestCase
     {
         return[
             [
-                new Hand(...StaticFixtures::getOneTwoOfAKind()),
-                new Score(new Hand(...StaticFixtures::getOneTwoOfAKind()), 6 * HighCard::MULTIPLIER),
+                new Hand(...StaticFixtures::one_pair()),
+                new Score(new Hand(...StaticFixtures::one_pair()), 6 * HighCard::MULTIPLIER),
             ],
             [
-                new Hand(...StaticFixtures::getThreeOfAKind()),
-                new Score(new Hand(...StaticFixtures::getThreeOfAKind()), 10 * HighCard::MULTIPLIER),
+                new Hand(...StaticFixtures::three_of_a_kind()),
+                new Score(new Hand(...StaticFixtures::three_of_a_kind()), 10 * HighCard::MULTIPLIER),
             ],
         ];
     }

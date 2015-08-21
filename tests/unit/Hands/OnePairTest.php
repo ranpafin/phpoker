@@ -1,17 +1,17 @@
 <?php
 
-namespace spec\Hands;
+namespace tests\unit\Hands;
 
 use Card\Hand;
 use Card\HandInterface;
 use Hands\OnePair;
 use Hands\Score;
-use Hands\Search\TwoOfAKindFinder;
+use Hands\Search\EqualityFinder;
 use Prophecy\Argument;
 use tests\StaticFixtures;
 
 /**
- * Class OnePairTest.
+ * Class OnePairTest
  */
 class OnePairTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,7 +24,7 @@ class OnePairTest extends \PHPUnit_Framework_TestCase
      */
     public function test_it_will_return_a_score_with_the_max_face_value_adjusted_with_the_hands_strength(HandInterface $hand, $finderResult, $expectedScore)
     {
-        $twoOfAKindFinder = $this->prophesize(TwoOfAKindFinder::class);
+        $twoOfAKindFinder = $this->prophesize(EqualityFinder::class);
 
         $twoOfAKindFinder->find($hand)->willReturn($finderResult);
 
@@ -35,7 +35,7 @@ class OnePairTest extends \PHPUnit_Framework_TestCase
 
     public function test_it_will_throw_an_exception_if_hand_found_size_is_wrong()
     {
-        $twoOfAKindFinder = $this->prophesize(TwoOfAKindFinder::class);
+        $twoOfAKindFinder = $this->prophesize(EqualityFinder::class);
 
         $twoOfAKindFinder->find(Argument::any())->willReturn(new Hand(...[]));
 
@@ -53,14 +53,14 @@ class OnePairTest extends \PHPUnit_Framework_TestCase
     {
         return[
             [
-                new Hand(...StaticFixtures::getOneTwoOfAKind()),
-                new Hand(...StaticFixtures::getOneTwoOfAKindActualPair()),
-                new Score(new Hand(...StaticFixtures::getOneTwoOfAKind()), (2 + 2) * OnePair::MULTIPLIER),
+                new Hand(...StaticFixtures::one_pair()),
+                new Hand(...StaticFixtures::three_of_a_kind_matching_pair()),
+                new Score(new Hand(...StaticFixtures::one_pair()), (2 + 2) * OnePair::MULTIPLIER),
             ],
             [
-                new Hand(...StaticFixtures::getThreeOfAKind()),
-                new Hand(...StaticFixtures::getOneTwoOfAKindActualPair()),
-                new Score(new Hand(...StaticFixtures::getThreeOfAKind()), (2 + 2) * OnePair::MULTIPLIER),
+                new Hand(...StaticFixtures::three_of_a_kind()),
+                new Hand(...StaticFixtures::three_of_a_kind_matching_pair()),
+                new Score(new Hand(...StaticFixtures::three_of_a_kind()), (2 + 2) * OnePair::MULTIPLIER),
             ],
             [
                 new Hand(...StaticFixtures::getFlush()),

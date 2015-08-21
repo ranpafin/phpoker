@@ -42,6 +42,11 @@ RUN sudo wget https://phar.phpunit.de/phpunit.phar
 RUN sudo chmod +x phpunit.phar
 RUN sudo mv phpunit.phar /usr/local/bin/phpunit
 
+#PHPDOCUMENTOR
+RUN sudo curl http://phpdoc.org/phpDocumentor.phar -o php-documentor
+RUN sudo chmod a+x php-documentor
+RUN sudo mv php-documentor /usr/local/bin/php-documentor
+
 #OH-MY-ZSH
 RUN git clone --depth=1 git://github.com/robbyrussell/oh-my-zsh.git  ~/.oh-my-zsh
 RUN cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc

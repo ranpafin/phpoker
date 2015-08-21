@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Hands\Search;
+namespace tests\unit\Hands;
 
 use Card\Hand;
 use Hands\Score;
@@ -13,7 +13,7 @@ class ScoreTest extends \PHPUnit_Framework_TestCase
 {
     public function test_it_contains_constains_an_hand()
     {
-        $hand = new Hand(...StaticFixtures::getThreeOfAKind());
+        $hand = new Hand(...StaticFixtures::three_of_a_kind());
 
         $score = new Score($hand, 10);
 

@@ -5,6 +5,10 @@ namespace Hands;
 use Card\HandInterface;
 use Hands\Search\HandSearchInterface;
 
+/**
+ * Class OnePair
+ * @package Hands
+ */
 class OnePair implements HandMatcherInterface
 {
     const MULTIPLIER = 10;
@@ -15,21 +19,21 @@ class OnePair implements HandMatcherInterface
     protected $twoOfAKindFinder;
 
     /**
-     * @param HandSearchInterface $twoOfAKindFinder
+     * @param HandSearchInterface $pairFinder
      */
-    public function __construct(HandSearchInterface $twoOfAKindFinder)
+    public function __construct(HandSearchInterface $pairFinder)
     {
-        $this->twoOfAKindFinder = $twoOfAKindFinder;
+        $this->pairFinder = $pairFinder;
     }
 
     /**
      * @param HandInterface $hand
      *
-     * @return bool|void
+     * @return Score|null
      */
     public function match(HandInterface $hand)
     {
-        $match = $this->twoOfAKindFinder->find($hand);
+        $match = $this->pairFinder->find($hand);
 
         if (!$match) {
             return;
