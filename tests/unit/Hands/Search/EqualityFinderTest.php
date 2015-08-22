@@ -23,7 +23,7 @@ class EqualityFinderTest extends \PHPUnit_Framework_TestCase
      * @param $searchedHand
      * @param $expectedHand
      */
-    public function test_it_will_return_an_hand_that_matches_the_search_null_otherwise(HandInterface $hand, $howManyCards,$searchedHand, $expectedHand)
+    public function test_it_will_return_an_hand_that_matches_the_search_null_otherwise(HandInterface $hand, $howManyCards, $searchedHand, $expectedHand)
     {
         $handSearch = $this->prophesize(HandSearch::class);
 
@@ -33,7 +33,7 @@ class EqualityFinderTest extends \PHPUnit_Framework_TestCase
 
         $handSearch->search(new Card(2, Suit::spades()), Argument::cetera())->willReturn($searchedHand);
 
-        $twoOfAKindFinder = new EqualityFinder($handSearch->reveal(),$howManyCards);
+        $twoOfAKindFinder = new EqualityFinder($handSearch->reveal(), $howManyCards);
 
         $actualHand = $twoOfAKindFinder->find($hand);
 

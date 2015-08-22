@@ -11,7 +11,7 @@ use Prophecy\Argument;
 use tests\StaticFixtures;
 
 /**
- * Class OnePairTest
+ * Class OnePairTest.
  */
 class OnePairTest extends \PHPUnit_Framework_TestCase
 {

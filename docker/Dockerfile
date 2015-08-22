@@ -47,6 +47,11 @@ RUN sudo curl http://phpdoc.org/phpDocumentor.phar -o php-documentor
 RUN sudo chmod a+x php-documentor
 RUN sudo mv php-documentor /usr/local/bin/php-documentor
 
+#PHPMD
+RUN sudo curl http://static.phpmd.org/php/latest/phpmd.phar -o php-md
+RUN sudo chmod a+x php-md
+RUN sudo mv php-md /usr/local/bin/php-md
+
 #OH-MY-ZSH
 RUN git clone --depth=1 git://github.com/robbyrussell/oh-my-zsh.git  ~/.oh-my-zsh
 RUN cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc

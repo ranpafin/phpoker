@@ -7,11 +7,10 @@ use Card\HandInterface;
 use Hands\Score;
 use Hands\Search\EqualityFinder;
 use Hands\ThreeOfAKind;
-use Prophecy\Argument;
 use tests\StaticFixtures;
 
 /**
- * Class ThreeOfAKindTest
+ * Class ThreeOfAKindTest.
  */
 class ThreeOfAKindTest extends \PHPUnit_Framework_TestCase
 {
@@ -26,8 +25,7 @@ class ThreeOfAKindTest extends \PHPUnit_Framework_TestCase
         HandInterface $handToSearch,
         $firstFinderResult,
         $expectedScore
-    )
-    {
+    ) {
         $threeOfAKindFinder = $this->prophesize(EqualityFinder::class);
 
         $threeOfAKindFinder->find($handToSearch)->willReturn($firstFinderResult);
@@ -36,7 +34,6 @@ class ThreeOfAKindTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expectedScore, $matcher->match($handToSearch));
     }
-
 
     /**
      * @return array
@@ -52,7 +49,7 @@ class ThreeOfAKindTest extends \PHPUnit_Framework_TestCase
             [
                 new Hand(...StaticFixtures::one_pair()),
                 null,
-                null
+                null,
             ],
         ];
     }

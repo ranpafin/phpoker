@@ -6,12 +6,10 @@ use Card\Card;
 use Card\Suit;
 
 /**
- * Class TwoPairTrait
- * @package tests\Fixtures
+ * Class TwoPairTrait.
  */
 trait PairTrait
 {
-
     public static function one_pair()
     {
         return [
@@ -22,7 +20,6 @@ trait PairTrait
             new Card(6, Suit::spades()),
         ];
     }
-
 
     public static function two_pairs()
     {

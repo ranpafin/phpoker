@@ -6,8 +6,7 @@ use Card\HandInterface;
 use Hands\Search\HandSearchInterface;
 
 /**
- * Class OnePair
- * @package Hands
+ * Class OnePair.
  */
 class OnePair implements HandMatcherInterface
 {

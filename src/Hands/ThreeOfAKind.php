@@ -5,6 +5,9 @@ namespace Hands;
 use Card\HandInterface;
 use Hands\Search\HandSearchInterface;
 
+/**
+ * Class ThreeOfAKind.
+ */
 class ThreeOfAKind implements HandMatcherInterface
 {
     const MULTIPLIER = 1000;
@@ -32,7 +35,7 @@ class ThreeOfAKind implements HandMatcherInterface
         $threeOfAKind = $this->threeOfAKindFinder->find($hand);
 
         if (!$threeOfAKind) {
-            return null;
+            return;
         }
 
         if (count($threeOfAKind->getCards()) !== 3) {

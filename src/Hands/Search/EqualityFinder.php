@@ -34,7 +34,7 @@ class EqualityFinder implements HandSearchInterface
     public function find(HandInterface $hand)
     {
         if (count($hand->getCards()) < $this->requiredMatches) {
-            return null;
+            return;
         }
 
         $cards = $hand->getCards();
@@ -46,6 +46,6 @@ class EqualityFinder implements HandSearchInterface
             }
         }
 
-        return null;
+        return;
     }
 }

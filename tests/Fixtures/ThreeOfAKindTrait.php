@@ -6,12 +6,10 @@ use Card\Card;
 use Card\Suit;
 
 /**
- * Class TwoPairTrait
- * @package tests\Fixtures
+ * Class TwoPairTrait.
  */
 trait ThreeOfAKindTrait
 {
-
     public static function three_of_a_kind()
     {
         return [

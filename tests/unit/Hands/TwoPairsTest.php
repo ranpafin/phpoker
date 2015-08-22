@@ -7,7 +7,6 @@ use Card\HandInterface;
 use Hands\Score;
 use Hands\Search\EqualityFinder;
 use Hands\TwoPairs;
-use Prophecy\Argument;
 use tests\StaticFixtures;
 
 /**
@@ -28,8 +27,7 @@ class TwoPairsTest extends \PHPUnit_Framework_TestCase
         $firstFinderResult,
         $secondFinderResult,
         $expectedScore
-    )
-    {
+    ) {
         $twoOfAKindFinder = $this->prophesize(EqualityFinder::class);
 
         $twoOfAKindFinder->find($handToSearch)->willReturn($firstFinderResult);
@@ -39,7 +37,6 @@ class TwoPairsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expectedScore, $matcher->match($handToSearch));
     }
-
 
     /**
      * @return array

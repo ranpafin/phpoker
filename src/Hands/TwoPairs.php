@@ -6,8 +6,7 @@ use Card\HandInterface;
 use Hands\Search\HandSearchInterface;
 
 /**
- * Class TwoPairs
- * @package Hands
+ * Class TwoPairs.
  */
 class TwoPairs implements HandMatcherInterface
 {
@@ -36,17 +35,17 @@ class TwoPairs implements HandMatcherInterface
         $firstPair = $this->pairFinder->find($hand);
 
         if (!$firstPair) {
-            return null;
+            return;
         }
 
         if (count($firstPair->getCards()) !== 2) {
             throw new \LogicException('A pair should be an Hand of size 2. Found: '.count($firstPair->getCards()));
         }
 
-        $secondPair = $this->pairFinder->find( $hand->discard($firstPair));
+        $secondPair = $this->pairFinder->find($hand->discard($firstPair));
 
         if (!$secondPair) {
-            return null;
+            return;
         }
 
         if (count($secondPair->getCards()) !== 2) {

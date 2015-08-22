@@ -4,6 +4,7 @@ namespace tests;
 
 use Card\Card;
 use Card\Suit;
+use tests\Fixtures\StraightTrait;
 use tests\Fixtures\ThreeOfAKindTrait;
 use tests\Fixtures\PairTrait;
 
@@ -12,8 +13,8 @@ use tests\Fixtures\PairTrait;
  */
 class StaticFixtures
 {
-
     use PairTrait;
+    use StraightTrait;
     use ThreeOfAKindTrait;
 
     /**

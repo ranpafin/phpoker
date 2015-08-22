@@ -7,8 +7,7 @@ use Card\Hand;
 use Card\HandInterface;
 
 /**
- * Class HandSearch
- * @package Hands\Search
+ * Class HandSearch.
  */
 class HandSearch
 {
@@ -31,6 +30,6 @@ class HandSearch
             }
         }
 
-        return count ($cards) ? new Hand(...$cards) : null;
+        return count($cards) ? new Hand(...$cards) : null;
     }
 }

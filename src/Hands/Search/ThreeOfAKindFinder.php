@@ -5,8 +5,7 @@ namespace Hands\Search;
 use Card\HandInterface;
 
 /**
- * Class ThreeOfAKindFinder
- * @package Hands\Search
+ * Class ThreeOfAKindFinder.
  */
 class ThreeOfAKindFinder implements HandSearchInterface
 {
@@ -31,7 +30,7 @@ class ThreeOfAKindFinder implements HandSearchInterface
     public function find(HandInterface $hand)
     {
         if (count($hand->getCards()) < 3) {
-            return null;
+            return;
         }
 
         $cards = $hand->getCards();
@@ -44,6 +43,6 @@ class ThreeOfAKindFinder implements HandSearchInterface
             }
         }
 
-        return null;
+        return;
     }
 }

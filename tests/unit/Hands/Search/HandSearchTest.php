@@ -17,9 +17,10 @@ class HandSearchTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider hands
      *
-     * @param Card $cardToFind
+     * @param Card          $cardToFind
      * @param HandInterface $handToSearch
      * @param $expectedHand
+     *
      * @internal param $hand
      */
     public function test_it_will_return_an_hand_that_matches_the_search_null_otherwise(Card $cardToFind, HandInterface $handToSearch, $expectedHand)
