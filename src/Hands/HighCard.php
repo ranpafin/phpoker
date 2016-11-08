@@ -15,9 +15,9 @@ class HighCard implements HandMatcherInterface, AdjustableHandStrengthInterface
     /**
      * @param HandInterface $hand
      *
-     * @return Score|null
+     * @return Score
      */
-    public function match(HandInterface $hand)
+    public function match(HandInterface $hand): Score
     {
         $cards = $hand->getCards();
 
@@ -33,7 +33,7 @@ class HighCard implements HandMatcherInterface, AdjustableHandStrengthInterface
     /**
      * @return int
      */
-    public function getMultiplier()
+    public function getMultiplier(): int
     {
         return self::MULTIPLIER;
     }

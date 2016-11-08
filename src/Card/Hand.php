@@ -13,7 +13,8 @@ class Hand implements HandInterface
     protected $cards;
 
     /**
-     * @param Card ...$cards
+     * Hand constructor.
+     * @param Card[] ...$cards
      */
     public function __construct(Card ...$cards)
     {
@@ -25,7 +26,6 @@ class Hand implements HandInterface
               $faceValueDifference = $b->getFaceValue() - $a->getFaceValue();
 
             return $faceValueDifference === 0 ? $b->getSuit()->getSuit() - $a->getSuit()->getSuit() : $faceValueDifference;
-
         });
 
         $this->cards = \SplFixedArray::fromArray($cards, false);
@@ -34,7 +34,7 @@ class Hand implements HandInterface
     /**
      * @return Card[]
      */
-    public function getCards()
+    public function getCards() : array
     {
         return $this->cards->toArray();
     }
@@ -44,7 +44,7 @@ class Hand implements HandInterface
      *
      * @return HandInterface
      */
-    public function discard(HandInterface $hand)
+    public function discard(HandInterface $hand) : HandInterface
     {
         $cards = $this->getCards();
 
@@ -62,7 +62,7 @@ class Hand implements HandInterface
      *
      * @return HandInterface
      */
-    public function insert(HandInterface $handInterface)
+    public function insert(HandInterface $handInterface): HandInterface
     {
         return new self(
             ...array_merge(
@@ -77,7 +77,7 @@ class Hand implements HandInterface
      *
      * @return HandInterface
      */
-    public function keep($numberOfCardsToKeep)
+    public function keep(int $numberOfCardsToKeep): HandInterface
     {
         if ($this->cards->count() <= $numberOfCardsToKeep) {
             return $this;
@@ -91,7 +91,7 @@ class Hand implements HandInterface
     /**
      * @return int
      */
-    public function getFaceValue()
+    public function getFaceValue(): int
     {
         $faceValue = 0;
         foreach ($this->getCards() as $card) {

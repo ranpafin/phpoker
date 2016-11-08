@@ -28,14 +28,14 @@ class TwoPairs implements HandMatcherInterface
     /**
      * @param HandInterface $hand
      *
-     * @return bool|null
+     * @return bool
      */
     public function match(HandInterface $hand)
     {
         $firstPair = $this->pairFinder->find($hand);
 
         if (!$firstPair) {
-            return;
+            return false;
         }
 
         if (count($firstPair->getCards()) !== 2) {
@@ -45,7 +45,7 @@ class TwoPairs implements HandMatcherInterface
         $secondPair = $this->pairFinder->find($hand->discard($firstPair));
 
         if (!$secondPair) {
-            return;
+            return false;
         }
 
         if (count($secondPair->getCards()) !== 2) {
@@ -59,7 +59,7 @@ class TwoPairs implements HandMatcherInterface
                 ->keep(1)
                 ->insert($firstPair)
                 ->insert($secondPair),
-                ($firstPair->getFaceValue() + $secondPair->getFaceValue())  * self::MULTIPLIER
+            ($firstPair->getFaceValue() + $secondPair->getFaceValue())  * self::MULTIPLIER
         );
     }
 }

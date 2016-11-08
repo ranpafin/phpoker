@@ -18,11 +18,12 @@
     }
   ],
   "require": {
-    "symfony/dependency-injection": "2.*",
-    "symfony/config": "2.*"
+    "symfony/dependency-injection": "@stable",
+    "symfony/config": "@stable"
   },
   "require-dev": {
     "phpunit/phpunit": "@stable",
+    "squizlabs/php_codesniffer": "@stable",
     "satooshi/php-coveralls": "dev-master"
   },
   "config": {
@@ -35,6 +36,14 @@
       "spec\\": "spec/",
       "tests\\": "tests/"
     }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "bash contrib/setup.sh"
+    ],
+    "post-update-cmd": [
+      "bash contrib/setup.sh"
+    ]
   },
   "minimum-stability": "dev"
 }

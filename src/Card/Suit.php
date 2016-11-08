@@ -52,7 +52,7 @@ class Suit
     /**
      * @return Suit
      */
-    public static function spades()
+    public static function spades(): Suit
     {
         return new self(self::SPADES);
     }
@@ -60,7 +60,7 @@ class Suit
     /**
      * @return Suit
      */
-    public static function flowers()
+    public static function flowers(): Suit
     {
         return new self(self::FLOWERS);
     }
@@ -68,7 +68,7 @@ class Suit
     /**
      * @return Suit
      */
-    public static function diamonds()
+    public static function diamonds(): Suit
     {
         return new self(self::DIAMONDS);
     }
@@ -76,7 +76,7 @@ class Suit
     /**
      * @return int
      */
-    public function getSuit()
+    public function getSuit(): int
     {
         return $this->suit;
     }

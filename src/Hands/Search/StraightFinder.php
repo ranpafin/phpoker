@@ -28,12 +28,12 @@ class StraightFinder implements HandSearchInterface
     /**
      * @param HandInterface $hand
      *
-     * @return HandInterface|null
+     * @return HandInterface
      */
     public function find(HandInterface $hand)
     {
         if (count($hand->getCards()) < 5) {
-            return;
+            return null;
         }
 
         $cards = $hand->getCards();
@@ -44,7 +44,7 @@ class StraightFinder implements HandSearchInterface
 
             $flushCards = [];
 
-            for ($faceValueCounter = $start;$faceValueCounter <= $end;++$faceValueCounter) {
+            for ($faceValueCounter = $start; $faceValueCounter <= $end; ++$faceValueCounter) {
                 $matchingHand = $this->handSearch->search(new Card($faceValueCounter == 1 ? 14 : $faceValueCounter, Suit::diamonds()), $hand);
 
                 if ($matchingHand && count($matchingHand->getCards())) {
@@ -57,6 +57,6 @@ class StraightFinder implements HandSearchInterface
             }
         }
 
-        return;
+        return null;
     }
 }

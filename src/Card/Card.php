@@ -13,7 +13,12 @@ class Card
     /** @var Suit */
     protected $suit;
 
-    public function __construct($faceValue, Suit $suit)
+    /**
+     * Card constructor.
+     * @param int $faceValue
+     * @param Suit $suit
+     */
+    public function __construct(int $faceValue, Suit $suit)
     {
         $this->faceValue = $faceValue;
         $this->suit = $suit;
@@ -22,7 +27,7 @@ class Card
     /**
      * @return int
      */
-    public function getFaceValue()
+    public function getFaceValue(): int
     {
         return $this->faceValue;
     }
@@ -30,7 +35,7 @@ class Card
     /**
      * @return Suit
      */
-    public function getSuit()
+    public function getSuit(): Suit
     {
         return $this->suit;
     }

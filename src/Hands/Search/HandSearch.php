@@ -15,7 +15,7 @@ class HandSearch
      * @param Card          $cardToFind
      * @param HandInterface $hand
      *
-     * @return Hand
+     * @return Hand|null
      */
     public function search(Card $cardToFind, HandInterface $hand)
     {

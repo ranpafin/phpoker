@@ -10,5 +10,5 @@ interface ScoreInterface
     /**
      * @return int
      */
-    public function getScore();
+    public function getScore(): int;
 }

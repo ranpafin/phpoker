@@ -11,5 +11,5 @@ interface AdjustableHandStrengthInterface
     /**
      * @return int
      */
-    public function getMultiplier();
+    public function getMultiplier() : int;
 }

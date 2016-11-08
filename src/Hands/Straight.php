@@ -35,7 +35,7 @@ class Straight implements HandMatcherInterface
         $straight = $this->straightFinder->find($hand);
 
         if (!$straight) {
-            return;
+            return false;
         }
 
         if (count($straight->getCards()) !== 5) {

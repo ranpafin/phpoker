@@ -35,7 +35,7 @@ class OnePair implements HandMatcherInterface
         $match = $this->pairFinder->find($hand);
 
         if (!$match) {
-            return;
+            return false;
         }
 
         if (count($match->getCards()) !== 2) {

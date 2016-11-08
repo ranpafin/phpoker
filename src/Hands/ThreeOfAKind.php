@@ -28,14 +28,14 @@ class ThreeOfAKind implements HandMatcherInterface
     /**
      * @param HandInterface $hand
      *
-     * @return bool|null
+     * @return bool
      */
     public function match(HandInterface $hand)
     {
         $threeOfAKind = $this->threeOfAKindFinder->find($hand);
 
         if (!$threeOfAKind) {
-            return;
+            return false;
         }
 
         if (count($threeOfAKind->getCards()) !== 3) {
@@ -47,7 +47,7 @@ class ThreeOfAKind implements HandMatcherInterface
                 ->discard($threeOfAKind)
                 ->keep(2)
                 ->insert($threeOfAKind),
-                $threeOfAKind->getFaceValue()  * self::MULTIPLIER
+            $threeOfAKind->getFaceValue()  * self::MULTIPLIER
         );
     }
 }

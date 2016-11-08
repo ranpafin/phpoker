@@ -1,0 +1,4 @@
+services:
+
+  high_card:
+    class: Hands\HighCard

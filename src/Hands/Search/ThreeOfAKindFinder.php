@@ -30,7 +30,7 @@ class ThreeOfAKindFinder implements HandSearchInterface
     public function find(HandInterface $hand)
     {
         if (count($hand->getCards()) < 3) {
-            return;
+            return null;
         }
 
         $cards = $hand->getCards();
@@ -43,6 +43,6 @@ class ThreeOfAKindFinder implements HandSearchInterface
             }
         }
 
-        return;
+        return null;
     }
 }

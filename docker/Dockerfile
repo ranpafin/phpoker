@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM php:7.0-cli
 
 MAINTAINER Francesco Panina <francesco.panina@gmail.com>
 
@@ -15,11 +15,25 @@ RUN apt-get install -y rename
 RUN apt-get install -y perl
 RUN apt-get install -y git
 RUN apt-get install -y sudo
-RUN apt-get install -y php5 php5-curl php5-intl php5-mysql php5-xdebug
 RUN apt-get install -y git
 RUN apt-get install -y less vim-tiny nano
 RUN apt-get install -y apg
 RUN apt-get install -y wget
+
+# Install Xdebug
+RUN curl -fsSL 'https://xdebug.org/files/xdebug-2.4.1.tgz' -o xdebug.tar.gz \
+    && mkdir -p xdebug \
+    && tar -xf xdebug.tar.gz -C xdebug --strip-components=1 \
+    && rm xdebug.tar.gz \
+    && ( \
+    cd xdebug \
+    && phpize \
+    && ./configure --enable-xdebug \
+    && make -j$(nproc) \
+    && make install \
+    ) \
+    && rm -r xdebug \
+    && docker-php-ext-enable xdebug
 
 COPY config/sudoers /etc/sudoers
 

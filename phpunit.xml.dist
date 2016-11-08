@@ -11,6 +11,12 @@
         </testsuite>
     </testsuites>
 
+    <testsuites>
+        <testsuite name="functional">
+            <directory suffix="Test.php">tests/functional</directory>
+        </testsuite>
+    </testsuites>
+
     <filter>
         <whitelist>
             <directory>src/</directory>
