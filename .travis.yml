@@ -6,10 +6,10 @@ php:
 fast_finish: true
 
 before_script:
-  - composer install -vvv
+  - composer install -v
 
 script:
-  - phpunit -v --coverage-clover ./build/logs/clover.xml
+  - phpunit -vvv --coverage-clover ./build/logs/clover.xml
 
 after_script:
-  -  php bin/coveralls -v
+  -  php bin/coveralls -vvv
